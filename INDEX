@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdtCut - Acortador de URLs</title>
+    <meta name="description"
+        content="Acorta tus URLs largas en enlaces personalizados por campaña. Rápido, fácil y gratis.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <!-- Header -->
+            <header>
+                <h1><span class="gradient-text">AdtCut</span></h1>
+                <p class="tagline">Acorta URLs con códigos personalizados por campaña</p>
+                <p class="subtitle">Rápido, fácil y completamente gratis</p>
+            </header>
+
+            <!-- Main shortener card -->
+            <div class="glass-card">
+                <form id="shortenerForm">
+                    <div class="input-group">
+                        <label for="url" class="input-label">URL a Acortar</label>
+                        <input type="text" id="url" class="input-field"
+                            placeholder="https://ejemplo.com/una-url-muy-larga-que-quieres-acortar" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="campaign" class="input-label">Código de Campaña (Opcional)</label>
+                        <input type="text" id="campaign" class="input-field" placeholder="black-friday-2024">
+                        <p class="input-hint">Si lo dejas vacío, se generará un código automáticamente</p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span id="btnText">✨ Acortar URL</span>
+                        <span id="btnLoading" class="hidden">
+                            <span class="spinner"></span>
+                            <span>Acortando...</span>
+                        </span>
+                    </button>
+                </form>
+
+                <div id="errorBox" class="error-box hidden">
+                    <strong>⚠️ Error:</strong> <span id="errorMessage"></span>
+                </div>
+
+                <div id="successBox" class="success-box hidden">
+                    <div class="success-header">
+                        <span style="font-size: 1.5rem;">🎉</span>
+                        <strong>¡URL Creada!</strong>
+                    </div>
+                    <div class="short-url" id="shortUrl"></div>
+                    <div id="campaignBadge" class="stats-badge hidden">
+                        📋 Campaña: <strong id="campaignName"></strong>
+                    </div>
+                    <button class="btn btn-secondary" id="copyBtn" style="margin-top: 1rem;">
+                        📋 Copiar al Portapapeles
+                    </button>
+                    <div class="original-url-section">
+                        <strong>URL Original:</strong>
+                        <p class="original-url" id="originalUrl"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent links -->
+            <div id="recentLinksSection" class="recent-links hidden">
+                <h2>Enlaces Recientes</h2>
+                <div id="recentLinksList"></div>
+            </div>
+
+            <!-- Footer -->
+            <footer>
+                <p>© 2025 AdtCut. Hecho con ❤️ para tus campañas.</p>
+            </footer>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
